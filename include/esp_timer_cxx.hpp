@@ -96,6 +96,11 @@ public:
         CHECK_THROW(esp_timer_start_periodic(timer_handle, period.count()));
     }
 
+    inline bool is_active()
+    {
+        return esp_timer_is_active(timer_handle);
+    }
+
     /**
      * @brief Stop the previously started timer.
      *

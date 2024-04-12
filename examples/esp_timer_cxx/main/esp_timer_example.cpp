@@ -25,6 +25,12 @@ extern "C" void app_main(void)
         ESPTimer timer([]() { printf("timeout\n"); });
         timer.start(chrono::microseconds(200 * 1000));
 
+        if (timer.is_active()) {
+            printf("timer is active\n");
+        } else {
+            printf("timer is inactive\n");
+        }
+
         this_thread::sleep_for(std::chrono::milliseconds(550));
 
         printf("Setting up timer to trigger periodically every 200ms\n");
@@ -32,6 +38,12 @@ extern "C" void app_main(void)
         timer2.start_periodic(chrono::microseconds(200 * 1000));
 
         this_thread::sleep_for(std::chrono::milliseconds(1050));
+        if (timer.is_active()) {
+            printf("timer is active\n");
+        } else {
+            printf("timer is inactive\n");
+        }
+
     } catch (const ESPException &e) {
         printf("Exception with error: %d\n", e.error);
     }
