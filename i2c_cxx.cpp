@@ -113,9 +113,9 @@ I2CMaster::I2CMaster(I2CNumber i2c_number,
 {
     i2c_config_t conf = {};
     conf.mode = I2C_MODE_MASTER;
-    conf.scl_io_num = scl_gpio.get_value();
+    conf.scl_io_num = scl_gpio.get_value<gpio_num_t>();
     conf.scl_pullup_en = scl_pullup;
-    conf.sda_io_num = sda_gpio.get_value();
+    conf.sda_io_num = sda_gpio.get_value<gpio_num_t>();
     conf.sda_pullup_en = sda_pullup;
     conf.master.clk_speed = clock_speed.get_value();
     I2C_CHECK_THROW(i2c_param_config(i2c_num.get_value<i2c_port_t>(), &conf));
@@ -165,9 +165,9 @@ I2CSlave::I2CSlave(I2CNumber i2c_number,
 {
     i2c_config_t conf = {};
     conf.mode = I2C_MODE_SLAVE;
-    conf.scl_io_num = scl_gpio.get_value();
+    conf.scl_io_num = scl_gpio.get_value<gpio_num_t>();
     conf.scl_pullup_en = scl_pullup;
-    conf.sda_io_num = sda_gpio.get_value();
+    conf.sda_io_num = sda_gpio.get_value<gpio_num_t>();
     conf.sda_pullup_en = sda_pullup;
     conf.slave.addr_10bit_en = 0;
     conf.slave.slave_addr = slave_addr.get_value();
